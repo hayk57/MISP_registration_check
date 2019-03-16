@@ -50,11 +50,8 @@ def main(argv):
 
     for item in reponse.text.split("</vehicleJson>"):
         if "<vehicleJson>" in item:
-            #print (item [ item.find("<vehicleJson>")+len("<vehicleJson>") : ])
             responseJson = item [ item.find("<vehicleJson>")+len("<vehicleJson>") : ]
             
-    #responseJson = '{"Description":"VOLKSWAGEN SCIROCCO","RegistrationYear":"2008","CarMake":{"CurrentTextValue":"VOLKSWAGEN"},"CarModel":{"CurrentTextValue":"SCIROCCO"},"EngineSize":{"CurrentTextValue":"8"},"FuelType":{"CurrentTextValue":""},"MakeDescription":{"CurrentTextValue":"VOLKSWAGEN"},"ModelDescription":{"CurrentTextValue":"SCIROCCO"},"Immobiliser":{"CurrentTextValue":""},"IndicativeValue":{"CurrentTextValue":"10807.98"},"DriverSide":{"CurrentTextValue":""},"BodyStyle":{"CurrentTextValue":"CoupÃ©"},"RegistrationDate":"2009-08-07","ImageUrl":"http://immatriculationapi.com/image.aspx/@Vk9MS1NXQUdFTiBTQ0lST0NDTw==","ExtendedData":{"anneeSortie":"2008","boiteDeVitesse":"M","carburantVersion":"T","carrosserieVersion":"24","classeSra":"M","libVersion":"2.0 TDI 140 CARAT","libelleModele":"SCIROCCO","marque":"VW","modele":"14","produit":"A1","puissance":"8","version":"045","cleCarrosserie":"2499CPE","groupeSra":"33","nbPlace":"4","datePremiereMiseCirculation":"07082009","questionBatterie":"N","electrique":"N","genre":null,"typeVehicule":"99","numSerieMoteur":"WVWZZZ13ZAV408908","valeurANeufSRA":"","niveauRisqueVol":"0","protectionConstructeur":"S7","puissanceDyn":"140","segmentVeh":"M1"}}'
-
     vehicleJson = json.loads(responseJson)
 
     mispObject = MISPObject('vehicle')
