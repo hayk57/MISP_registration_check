@@ -1,0 +1,1 @@
+MISP_registration_check
