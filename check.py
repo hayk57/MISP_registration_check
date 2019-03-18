@@ -36,7 +36,9 @@ def main(argv):
         url = "http://www.regcheck.org.uk/api/reg.asmx/CheckFrance"
     if (country == "es"):
         url = "http://www.regcheck.org.uk/api/reg.asmx/CheckSpain"
-
+    if (country == "uk"):
+        url = "http://www.regcheck.org.uk/api/reg.asmx/Check"
+        
     payload = "RegistrationNumber=" + reg + "&username=" + username
     headers = {
         'Content-Type': "application/x-www-form-urlencoded",
@@ -59,7 +61,8 @@ def main(argv):
     carMake = vehicleJson["CarMake"]["CurrentTextValue"]
     carModel = vehicleJson["CarModel"]["CurrentTextValue"]
     ImageUrl = vehicleJson["ImageUrl"]
-
+    IndicativeValue=""
+    
     if (country == "fr"):
         IndicativeValue = vehicleJson["IndicativeValue"]["CurrentTextValue"]
         BodyStyle = vehicleJson["BodyStyle"]["CurrentTextValue"]
@@ -73,10 +76,11 @@ def main(argv):
         mispObject.add_attribute('gearbox', type='text', value=gearbox)
 
     if (country == "es"):
-        IndicativeValue = vehicleJson["IndicativePrice"]
+         IndicativeValue = vehicleJson["IndicativePrice"]
+
+    if (country == "es" or country == "uk"):
         firstRegistration = vehicleJson["RegistrationDate"]
         VIN = vehicleJson["VehicleIdentificationNumber"]
-
 
 
     mispObject.add_attribute('description', type='text', value=carDescription)
@@ -84,6 +88,8 @@ def main(argv):
     mispObject.add_attribute('model', type='text', value=carModel)
     mispObject.add_attribute('vin', type='text', value=VIN)
     mispObject.add_attribute('license-plate-number', type='text', value=reg)
+    
+    mispObject.add_attribute('lindicative-value', type='text', value=IndicativeValue)
 
     mispObject.add_attribute('date-first-registration', type='text', value=firstRegistration)
     mispObject.add_attribute('image-url', type='text', value=ImageUrl)
