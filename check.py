@@ -16,7 +16,7 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv,"hc:r:u:",["country=","registration=","username="])
     except getopt.GetoptError:
-        print ('2 check.py -c <country> -r <registration> -u <username>')
+        print ('check.py -c <country> -r <registration> -u <username>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
