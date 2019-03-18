@@ -41,7 +41,6 @@ def main(argv):
     headers = {
         'Content-Type': "application/x-www-form-urlencoded",
         'cache-control': "no-cache",
-        'Postman-Token': "c76f138c-59b6-492a-9be9-1a21a0c657b1"
         }
 
     reponse = requests.request("POST", url, data=payload, headers=headers)
